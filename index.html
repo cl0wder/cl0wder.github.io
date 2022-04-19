@@ -1,1 +1,188 @@
-start
+<html>
+<head>
+<title>@L4y generator</title>
+</head>
+		<style>
+		
+            a {
+                color: red;
+                text-decoration: none;
+            }
+            a:hover {
+                color: teal;
+            }
+            .heading {
+                text-align: center;
+                font: 300% impact;
+                margin-top: 1vh;
+            }
+			.subheading {
+				margin-top: 1vh;
+				color: lawngreen;
+				font-family: Comic Sans Ms;
+				font: 110% impact;
+				text-align: center;
+				text-transform: capitalize;
+			}
+			.input {
+				margin-top: 10vh;
+				text-align: center;
+			}
+            .footer {
+                text-align: center;
+                font: 25px impact;
+                color: white;
+                position: fixed;
+                bottom: 0vh;
+                left: 0vh;
+                right: 0vh;
+            }
+			textarea {
+				color: white;
+				font-size: 100%;
+				font-weight: bold;
+				font-family: cursive;
+				border-left: black;
+				border-right: black;
+				border-style: groove;
+				background-color: #080510; 
+			}
+			input {
+				color: white;
+				font-family: cursive;
+				border-left: black;
+				border-right: black;
+				border-style: groove;
+				background-color: #080510; 
+			}
+			select {
+				color: white;
+				font-size: 100%;
+				font-weight: bold;
+				font-family: cursive;
+				border-left: black;
+				border-right: black;
+				border-style: groove;
+				background-color: #080510;
+			}
+			option {
+				color: white;
+				font-size: 100%;
+				font-weight: bold;
+				font-family: cursive;
+				border-left: black;
+				border-right: black;
+				border-style: groove;
+				background-color: #080510;
+			}
+		</style>
+<body style="background: black;">
+ <div class="heading">
+        <font>
+            <span style="color: white;">@L4y cipher By</span> 
+            <span style="color: red;">Dmitry Kowalsky</span>
+        </font>
+  </div>
+        <div class="subheading">
+			<font>Ini adalah cipher @L4y wakowkaokwo, kalau diluar negeri namanya LeetSpeak atau <a href="https://en.wikipedia.org/wiki/Leet">1337</a></font>
+		</div>
+<script>
+
+
+let originalLetterChance = 0.5;
+
+let letters = {
+	"A":["4", "/-\\", "/_\\", "@", "/\\"],
+	"B":["8", "|3", "13", "|}", "|:", "|8", "18", "6", "|B", "|8", "lo", "|o", "&"],
+	"C":["<", "{", "[", "("],
+	"D":["|)", "|}", "|]", "|_)"],
+	"E":["3", "[-"],
+	"F":["|=", "ph", "|#", "|\""],
+	"G":["[-", "[+", "6"],
+	"H":["4", "|-|", "[-]", "{-}", "|=|", "[=]", "{=}"],
+	"I":["1", "|", "!", "9"],
+	"J":["_|", "_/", "_7", "_)", "_]", "_}"],
+	"K":["|<", "1<", "l<", "|{", "l{"],
+	"L":["|_", "|", "1", "]["],
+	"M":["44", "|\\/|", "^^", "/\\/\\", "/X\\", "[]\\/][", "[]V[]", "][\\\\//][", "(V)","//.", ".\\\\", "N\\"],
+	"N":["|\\|", "/\\/", "/V", "][\\\\]["],
+	"O":["0", "()", "[]", "{}", "<>"],
+	"P":["|O", "|>", "|*", "|°", "|D", "/o"], //"|o",
+	"Q":["O_", "9", "(,)", "0,"],
+	"R":["|2", "12", ".-", "|^", "l2", "?"],
+	"S":["5", "$"], //, "§"
+	"T":["7", "+", "7`", "'|'"],
+	"U":["|_|", "\\_\\", "/_/", "\\_/", "(_)", "[_]", "{_}"],
+	"V":["\\/"],
+	"W":["\\/\\/", "(/\\)", "\\^/", "|/\\|", "\\X/", "\\\\'", "'//", "VV"],
+	"X":["%", "*", "><", "}{", ")("],
+	"Y":["`/"], //, "¥"
+	"Z":["2", "7_", ">_"],
+	"0":["O", "D"],
+	"1":["I", "L"],
+	"2":["Z"],
+	"3":["E"],
+	"4":["H", "A"],
+	"5":["S"],
+	"6":["b", "G"],
+	"7":["T", "L", "J"],
+	"8":["B"],
+	"9":["P"],
+};
+
+leedfyLetter = function(c){
+
+	if(Math.random() < originalLetterChance)
+		return c;
+
+	let translations = [];
+	if(letters[c.toUpperCase()] != undefined)
+		translations = letters[c.toUpperCase()];
+	
+	if(translations.length == 0)
+		translations.push(c);
+				
+	return translations[Math.floor((Math.random() * translations.length))];
+}
+
+leedfy = function(str){
+	let out = "";
+	for(c in str){
+		out += leedfyLetter(str[c]);
+	}
+	
+	return out;
+} 
+
+textChanged = function(){
+	document.getElementById('out').innerHTML = leedfy(document.getElementById('in').value);
+}
+
+</script>
+
+<div style="margin: auto; text-align: center; margin-top: 10%;">
+	<input type="text" id="in" style="
+		width: 70%; 
+		padding: 12px 20px; 
+		margin: 8px 0;  
+		border: 2px solid white; 
+		background-color: black; 
+		color: white;
+	" placeholder="Input teks" onkeyup="textChanged()">
+	<div id="out" style="
+	padding-top: 5%;
+	width: 70%;
+	margin: auto;  
+	color: white;
+	font-size: 3.5em;
+	font-family: sans-serif; 
+	"></div>
+</div>
+        <div class="footer">
+            <font>
+            Developed By 
+                <span style="color: red;">Dmitry Kowalsky</span>
+            </font>
+        </div>
+</body>
+</html>
